@@ -1,8 +1,10 @@
 package bo.ihm.beans;
 
+import javax.validation.groups.Default;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
-@NumeroSecuriteSociale
+@NumeroSecuriteSociale(groups = Default.class)
 public class Pojo {
 
     private boolean forain;
