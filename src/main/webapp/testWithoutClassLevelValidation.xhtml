@@ -38,12 +38,12 @@
 
 			<f:ajax execute="@form" render="@form">
 			
-				<h:commandButton value="Mandatory" action="#{testBean.enregistrerEtat('3')}">
-					<o:validateBean value="#{testBean.pojo}" validationGroups="bo.ihm.beans.Mandatory" />
+				<h:commandButton value="Mandatory" >
+					<o:validateBean validationGroups="bo.ihm.beans.Mandatory" />
 				</h:commandButton>
 
-				<h:commandButton value="Optional" action="#{testBean.enregistrerEtat('2')}">
-					<o:validateBean value="#{testBean.pojo}" validationGroups="javax.validation.groups.Default" />
+				<h:commandButton value="Optional" >
+					<o:validateBean validationGroups="javax.validation.groups.Default" />
 				</h:commandButton>
 			</f:ajax>
 		</h:panelGrid>

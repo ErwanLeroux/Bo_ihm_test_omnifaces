@@ -43,4 +43,24 @@ public class Pojo {
     public void setNumeroSecuriteSociale(final String pNumeroSecuriteSociale) {
         numeroSecuriteSociale = pNumeroSecuriteSociale;
     }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Pojo [forain=");
+        builder.append(forain);
+        builder.append(", cleSecuriteSociale=");
+        builder.append(cleSecuriteSociale);
+        builder.append(", numeroSecuriteSociale=");
+        builder.append(numeroSecuriteSociale);
+        builder.append(", mandatory=");
+        builder.append(mandatory);
+        builder.append("]");
+        return builder.toString();
+    }
 }

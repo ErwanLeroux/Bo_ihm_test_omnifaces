@@ -17,7 +17,7 @@ public @interface NumeroSecuriteSociale {
 
     Class<?>[] groups() default {};
 
-    String message() default "erreur de validation";
+    String message() default "${validatedValue} is not valid";
 
     Class<? extends Payload>[] payload() default {};
 }

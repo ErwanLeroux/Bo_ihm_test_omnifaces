@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:o="http://omnifaces.org/ui">
+
+<f:metadata>
+	<f:viewAction action="#{testBean.init}" />
+</f:metadata>
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Test</title>
+</h:head>
+
+<h:body>
+
+	<h:form id="formaliteACCRE">
+		<h:panelGrid columns="1" style="width: 100%;">
+			<h:panelGrid columns="2" style="width: 100%; display: inline-block;">
+				<h:outputLabel for="forain">Yes or No ?</h:outputLabel>
+				<h:selectBooleanCheckbox id="forain" value="#{testBean.pojo.forain}">
+					<f:ajax execute="forain" render="groupeDomicile" />
+				</h:selectBooleanCheckbox>
+			</h:panelGrid>
+
+			<h:panelGroup id="groupeDomicile">
+				<h:outputText value="Yes" rendered="#{testBean.pojo.forain}" />
+				<h:outputText value="No" rendered="#{not testBean.pojo.forain}" />
+			</h:panelGroup>
+
+			<h:inputText id="numeroSecu" value="#{testBean.pojo.numeroSecuriteSociale}" maxlength="13" size="13" />
+			<h:inputText id="numeroSecuCle" value="#{testBean.pojo.cleSecuriteSociale}" maxlength="2" size="3" />
+
+			<h:panelGrid columns="2" style="width: 100%; display: inline-block;">
+				<h:inputText id="mandatory" value="#{testBean.pojo.mandatory}" maxlength="13" size="13" />
+				<h:outputText value="*" style="color:red;" />
+			</h:panelGrid>
+
+			<f:ajax execute="@form" render="@form">
+			
+				<h:commandButton value="Mandatory">
+					<o:validateBean value="#{testBean.pojo}" validationGroups="bo.ihm.beans.Mandatory" />
+				</h:commandButton>
+
+				<h:commandButton value="Optional">
+					<o:validateBean value="#{testBean.pojo}" validationGroups="javax.validation.groups.Default" />
+				</h:commandButton>
+			</f:ajax>
+		</h:panelGrid>
+
+		<ui:remove> ################################################################################################ </ui:remove>
+		<ui:remove>								===== MESSAGES D'ERREURS =====								 		 </ui:remove>
+		<ui:remove> ################################################################################################ </ui:remove>
+
+		<h:panelGroup id="messagesErreur">
+			<h:panelGrid class="dr-pnl" width="100%" rendered="#{not empty facesContext.messageList}">
+				<h:messages style="color:red;" />
+			</h:panelGrid>
+		</h:panelGroup>
+	</h:form>
+</h:body>
+</html>
